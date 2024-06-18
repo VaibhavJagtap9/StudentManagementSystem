@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Management System</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .container {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .container:hover {
+            transform: scale(1.02);
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+            box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
+        }
+        .btn-info {
+            background-color: #17a2b8;
+            border-color: #17a2b8;
+            box-shadow: 0 4px 8px rgba(23, 162, 184, 0.2);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .btn-info:hover {
+            background-color: #138496;
+            border-color: #117a8b;
+            box-shadow: 0 6px 12px rgba(23, 162, 184, 0.3);
+        }
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            box-shadow: 0 4px 8px rgba(220, 53, 69, 0.2);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+            box-shadow: 0 6px 12px rgba(220, 53, 69, 0.3);
+        }
+        table {
+            margin-top: 20px;
+        }
+        th {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(0, 123, 255, 0.1);
+        }
+        tbody tr:hover {
+            background-color: rgba(0, 123, 255, 0.2);
+            transition: background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Student Management System</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" th:href="@{students}">Student Management</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="text-center">
+        <h2>Student List</h2>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-lg-3">
+            <a th:href="@{students/new}" class="btn btn-primary btn-sm">Add Student</a>
+        </div>
+    </div>
+
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="student : ${students}">
+                <td th:text="${student.firstName}"></td>
+                <td th:text="${student.lastName}"></td>
+                <td th:text="${student.email}"></td>
+                <td>
+                    <a th:href="@{/students/edit/{id}(id=${student.id})}" class="btn btn-info btn-sm">Update</a>
+                    <a th:href="@{/students/{id}(id=${student.id})}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
