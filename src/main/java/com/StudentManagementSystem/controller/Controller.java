@@ -16,6 +16,11 @@ public class Controller {
 	@Autowired
 	private StudentService service;
 	
+    @GetMapping("/main")
+    public String mainPage() {
+        return "main";  // This will map to src/main/resources/templates/main.html (if using Thymeleaf)
+    }
+
 	@GetMapping("/home")
 	public String home() {
 		return "home"; //view page html file ==> home.html
