@@ -102,7 +102,13 @@
 
     <div class="row mb-3">
         <div class="col-lg-3">
-            <a th:href="@{students/new}" class="btn btn-primary btn-sm">Add Student</a>
+            <a th:href="@{students/new}" class="btn btn-primary">Add Student</a>
+        </div>
+        <div>
+        	<form th:action="@{/students/search}" method="get">
+    			<input type="text" name="query" placeholder="Search by name">
+    			<button type="submit" class="btn btn-primary">Search</button>
+			</form>
         </div>
     </div>
 
@@ -123,6 +129,7 @@
                 <td>
                     <a th:href="@{/students/edit/{id}(id=${student.id})}" class="btn btn-info btn-sm">Update</a>
                     <a th:href="@{/students/{id}(id=${student.id})}" class="btn btn-danger btn-sm">Delete</a>
+                    <a th:href="@{/students/view/{id}(id=${student.id})}" class="btn btn-primary btn-sm">View</a>
                 </td>
             </tr>
         </tbody>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View Student</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #ffffff; /* Pure white background */
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #ffffff; /* White container background */
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 50px auto;
+            animation: fadeInUp 0.5s ease; /* Fade in animation */
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #007bff; /* Blue heading */
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Text shadow for emphasis */
+        }
+        .table {
+            width: 100%;
+            margin-bottom: 1rem;
+            color: #212529;
+            border-collapse: collapse;
+            border-spacing: 0;
+            text-align: left;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow to table */
+        }
+        .table th,
+        .table td {
+            padding: 0.75rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+        }
+        .table th {
+            vertical-align: bottom;
+            border-bottom: 2px solid #dee2e6;
+        }
+        .table-hover tbody tr:hover td,
+        .table-hover tbody tr:hover th {
+            background-color: #f8f9fa; /* Light gray on hover */
+        }
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #edf2f9; /* Alternate light blue rows */
+        }
+        .btn {
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .btn:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        .btn-secondary {
+            background-color: #6c757d; /* Darker blue button */
+            border-color: #6c757d;
+        }
+        .btn-secondary:hover {
+            background-color: #5a6268; /* Darker on hover */
+            border-color: #5a6268;
+        }
+        
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Student Details</h2>
+    <table class="table table-bordered table-hover table-striped">
+        <tr>
+            <th>First Name</th>
+            <td th:text="${student.firstName}" data-toggle="tooltip" data-placement="top" title="First Name"></td>
+        </tr>
+        <tr>
+            <th>Last Name</th>
+            <td th:text="${student.lastName}" data-toggle="tooltip" data-placement="top" title="Last Name"></td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td th:text="${student.email}" data-toggle="tooltip" data-placement="top" title="Email"></td>
+        </tr>
+    </table>
+    <a th:href="@{/students}" class="btn btn-secondary">Back to List</a>
+</div>
+
+<!-- JavaScript for Bootstrap tooltips -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- Script to activate tooltips -->
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+
+</body>
+</html>

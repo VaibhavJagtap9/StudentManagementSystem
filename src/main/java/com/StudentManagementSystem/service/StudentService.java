@@ -5,17 +5,14 @@ import java.util.List;
 import com.StudentManagementSystem.entity.Student;
 
 public interface StudentService {
-	
-	//Get Student Data
-	public Object getAllStudents();
 
-	//Add student - post mapping
-	public Student saveStudent(Student student);
+    List<Student> getAllStudents();
 
-	public Student getById(int id);
-	
-	//delete student 
-	public void deleteById(int id);
-	
+    void saveStudent(Student student);
 
+    Student getById(int id);
+
+    void deleteById(int id);
+    
+    List<Student> searchStudents(String query);
 }
